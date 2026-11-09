@@ -4,3 +4,4 @@
 - Step 0.1, the number of pizza names: 18
 - Step 0.3, status code of the request without a token: 401
 - Step 0.4, the name of your pizza: The Cute Margherita
+- Step 0.12, results of the three runs without a session (optional): FAILED, PASSED, FAILED
