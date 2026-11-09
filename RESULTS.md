@@ -27,3 +27,20 @@ status codes when the other user reads, changes and deletes:
   - read (GET): 404, body - PASSED
   - change (PUT): 400, body - PASSED
   - delete (DELETE): 400, body - PASSED
+
+## Part B
+1. A real-server tests can find problems between components, such as the load balancer and login, and actual server errors, such as the HTTP 500 error in Step 0.16. Unit tests with stubs are still useful because they run faster and help identify which function has a problem.
+
+2. Public-token ratings are shared, while creating a new user keeps each test's data separate. In Project 2, each test can create its own user and test data, then clean them up afterward.
+
+3. A session keeps the AWSALB cookie between requests, helping requests stay on the same server. My three runs of Step 0.12 were: failed, passed, then failed. This shows that requests without a session can be unreliable or flaky.
+
+4. The block "all 3 tools excluded". A 500 error with an empty body gives the application no useful message to show the user, while a 400 response can explain what went wrong. The test stays as xfail to keep the defect visible until it is fixed.
+
+5. Base choice coverage needs 9 tests: 1 + 2 + 3 + 1 + 2 = 9. All combinations coverage needs 72 tests: 3 × 4 × 2 × 3 = 72.
+
+6. In my Step A4 tests, 404 for reading, 400 for changing, and 400 for deleting. I expect a consistent not-found response, such as 404, for all three operations. The different status codes are an inconsistency, but the tests confirmed that the owner's rating remained unchanged.
+
+7. The API returned a list of ratings even though the token was fake. This is a security defect because a stranger could access rating data without logging in.
+
+8. My API tests check HTTP status codes, response bodies, and error messages directly. They also run without opening a browser. However, only web page tests can check the actual user interface and what users see on the screen.
