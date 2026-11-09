@@ -20,3 +20,10 @@
 - Expected result: HTTP 400 with a JSON error message because no pizza can be made when all available tools are excluded.
 - Actual result: HTTP 500 Internal Server Error with an empty response body.
 - Severity: Medium. No data is lost, but the application returns a server error for a normal customer choice and provides no error message to display to the user.
+
+## Part A
+- Step A4, Status Codes When Another User Accesses a Rating
+status codes when the other user reads, changes and deletes:
+  - read (GET): 404, body - PASSED
+  - change (PUT): 400, body - PASSED
+  - delete (DELETE): 400, body - PASSED
